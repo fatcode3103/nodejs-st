@@ -22,8 +22,16 @@ con.connect(function (err) {
 //     console.log("Database created");
 // });
 
+// con.query(
+//     "SELECT car.nameCar as name_car, persons.lastName as name_person FROM car JOIN persons ON  car.personID = persons.personID",
+//     function (err, result) {
+//         if (err) throw err;
+//         console.log("Result: " + result);
+//     }
+// );
+
 con.query(
-    "SELECT car.nameCar as name_car, persons.lastName as name_person FROM car JOIN persons ON  car.personID = persons.personID",
+    "SELECT persons.lastName as name, car.nameCar FROM persons LEFT JOIN car on persons.personID = car.personID",
     function (err, result) {
         if (err) throw err;
         console.log("Result: " + result);
